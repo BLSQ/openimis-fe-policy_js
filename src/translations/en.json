@@ -132,5 +132,7 @@
   "policy.PolicyRenewalsReport.sorting.null": "Any",
   "policy.PolicyRenewalsReport.sorting.D": "By renewal date",
   "policy.PolicyRenewalsReport.sorting.R": "By receipt number",
-  "policy.PolicyRenewalsReport.sorting.O": "By enrollment officer"
+  "policy.PolicyRenewalsReport.sorting.O": "By enrollment officer",
+  "policy.NewEnrollmentsReport.startDate": "Date From",
+  "policy.NewEnrollmentsReport.endDate": "Date To"
 }

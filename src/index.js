@@ -17,6 +17,7 @@ import { RIGHT_POLICY } from "./constants";
 import { policyMutation } from "./utils/utils";
 import PolicyRenewalsReport from "./reports/PolicyRenewalsReport";
 import PolicyPrimaryOperationalIndicatorsReport from "./reports/PolicyPrimaryOperationalIndicatorsReport";
+import NewEnrollmentsReport from "./reports/NewEnrollmentsReport";
 const ROUTE_POLICY_POLICIES = "policy/policies";
 const ROUTE_POLICY_POLICY = "policy/policy";
 
@@ -61,6 +62,15 @@ const DEFAULT_CONFIG = {
         }
         return params;
       },
+    },
+    {
+      key: "policy_new_enrollments",
+      component: NewEnrollmentsReport,
+      isValid: (values) => values.startDate && values.endDate,
+      getParams: (values) => ({
+        start_date: values.startDate,
+        end_date: values.endDate,
+      }),
     },
   ],
   "refs": [
