@@ -17,7 +17,8 @@ import { RIGHT_POLICY } from "./constants";
 import { policyMutation } from "./utils/utils";
 import PolicyRenewalsReport from "./reports/PolicyRenewalsReport";
 import PolicyPrimaryOperationalIndicatorsReport from "./reports/PolicyPrimaryOperationalIndicatorsReport";
-import NewEnrollmentsReport from "./reports/NewEnrollmentsReport";
+import NhiaNewEnrollmentsReport from "./reports/NhiaNewEnrollmentsReport";
+import NhiaPolicyRenewalsReport from "./reports/NhiaPolicyRenewalsReport";
 const ROUTE_POLICY_POLICIES = "policy/policies";
 const ROUTE_POLICY_POLICY = "policy/policy";
 
@@ -64,8 +65,8 @@ const DEFAULT_CONFIG = {
       },
     },
     {
-      key: "policy_new_enrollments",
-      component: NewEnrollmentsReport,
+      key: "nhia_new_enrollments",
+      component: NhiaNewEnrollmentsReport,
       isValid: (values) => values.startDate && values.endDate,
       getParams: (values) => ({
         start_date: values.startDate,
@@ -73,9 +74,18 @@ const DEFAULT_CONFIG = {
       }),
     },
     {
-      key: "non_active_members",
+      key: "nhia_non_active_members",
       isValid: (values) => true,
       getParams: (values) => values,
+    },
+    {
+      key: "nhia_policy_renewals",
+      component: NhiaPolicyRenewalsReport,
+      isValid: (values) => values.startDate && values.endDate,
+      getParams: (values) => ({
+        start_date: values.startDate,
+        end_date: values.endDate,
+      }),
     },
   ],
   "refs": [

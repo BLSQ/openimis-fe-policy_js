@@ -133,6 +133,8 @@
   "policy.PolicyRenewalsReport.sorting.D": "By renewal date",
   "policy.PolicyRenewalsReport.sorting.R": "By receipt number",
   "policy.PolicyRenewalsReport.sorting.O": "By enrollment officer",
-  "policy.NewEnrollmentsReport.startDate": "Date From",
-  "policy.NewEnrollmentsReport.endDate": "Date To"
+  "policy.NhiaNewEnrollmentsReport.startDate": "Date From",
+  "policy.NhiaNewEnrollmentsReport.endDate": "Date To",
+  "policy.NhiaPolicyRenewalsReport.startDate": "Date From",
+  "policy.NhiaPolicyRenewalsReport.endDate": "Date To"
 }

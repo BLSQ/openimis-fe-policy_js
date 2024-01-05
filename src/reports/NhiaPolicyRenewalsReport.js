@@ -2,7 +2,7 @@ import { Grid } from "@material-ui/core";
 import { PublishedComponent } from "@openimis/fe-core";
 import React from "react";
 
-const NewEnrollmentsReport = (props) => {
+const NhiaPolicyRenewalsReport = (props) => {
   const { values, setValues } = props;
 
   return (
@@ -13,7 +13,7 @@ const NewEnrollmentsReport = (props) => {
           value={values.startDate}
           module="policy"
           required
-          label="NewEnrollmentsReport.startDate"
+          label="NhiaPolicyRenewalsReport.startDate"
           onChange={(startDate) => setValues({ ...values, startDate })}
         />
       </Grid>
@@ -23,7 +23,7 @@ const NewEnrollmentsReport = (props) => {
           value={values.endDate}
           module="policy"
           required
-          label="NewEnrollmentsReport.endDate"
+          label="NhiaPolicyRenewalsReport.endDate"
           onChange={(endDate) => setValues({ ...values, endDate })}
         />
       </Grid>
@@ -31,4 +31,4 @@ const NewEnrollmentsReport = (props) => {
   );
 };
 
-export default NewEnrollmentsReport;
+export default NhiaPolicyRenewalsReport;
