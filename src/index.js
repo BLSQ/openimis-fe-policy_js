@@ -72,6 +72,11 @@ const DEFAULT_CONFIG = {
         end_date: values.endDate,
       }),
     },
+    {
+      key: "non_active_members",
+      isValid: (values) => true,
+      getParams: (values) => values,
+    },
   ],
   "refs": [
     { key: "policy.PolicyOfficerPicker", ref: PolicyOfficerPicker },
