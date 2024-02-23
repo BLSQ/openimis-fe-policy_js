@@ -315,13 +315,21 @@ class FamilyOrInsureePoliciesSummary extends PagedDataHandler {
       insuree,
       readOnly,
       className,
+      module,
+      title,
     } = this.props;
     if ((!family || !family.uuid) && (!insuree || !insuree.uuid)) {
       return null;
     }
 
+    // This check was made in order to still be able to create a new policy if you don't have the FAMILY_EDIT or FAMILY_ADD rights
+    let readOnlyIfNotFamily = readOnly;
+    if (module === "insuree" && title === "FamilyOverview.title") {
+      readOnlyIfNotFamily = false;
+    }
+
     let actions =
-      !!readOnly || !rights.includes(RIGHT_POLICY_ADD)
+      readOnlyIfNotFamily || !rights.includes(RIGHT_POLICY_ADD)
         ? []
         : [
             {
