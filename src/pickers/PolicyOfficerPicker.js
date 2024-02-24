@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { TextField } from "@material-ui/core";
 
@@ -25,6 +25,7 @@ const PolicyOfficerPicker = (props) => {
     multiple,
     filters,
     villageId,
+    restrictSelf,
   } = props;
   const [searchString, setSearchString] = useState(null);
   const { formatMessage } = useTranslations("policy");
@@ -41,8 +42,8 @@ const PolicyOfficerPicker = (props) => {
   }
 
   const { isLoading, data, error } = useGraphqlQuery(
-    `query PolicyOfficerPicker ($searchString: String, $first: Int, $district: String, $region: String) {
-      policyOfficers(search: $searchString, first: $first, district: $district, region: $region) {
+    `query PolicyOfficerPicker ($searchString: String, $first: Int, $district: String, $region: String, $restrict_self: Boolean) {
+      policyOfficers(search: $searchString, first: $first, district: $district, region: $region, restrictSelf: $restrict_self) {
         edges {
           node {
             id
@@ -55,9 +56,21 @@ const PolicyOfficerPicker = (props) => {
         }
       }
     }`,
-    { searchString, first: 20, district: distinctId, region: regionId },
+    { searchString,
+      first: 20,
+      district: distinctId,
+      region: regionId,
+      restrict_self: restrictSelf,
+    },
     { skip: true }
   );
+
+  useEffect(() => {
+    if (data?.policyOfficers?.edges?.length === 1 && !value) {
+        const singleOption = data.policyOfficers.edges[0].node;
+        onChange(singleOption, `${singleOption.code} ${singleOption.lastName} ${singleOption.otherNames}`);
+    }
+  }, [data, value, onChange]);
 
   return (
     <Autocomplete

@@ -325,6 +325,7 @@ class PolicyMasterPanel extends FormPanel {
                   )}
                   onChange={(v) => this.updateAttribute("officer", v)}
                   required={true}
+                  restrictSelf={true}
                   villageId={
                     !!edited.family ? decodeId(edited.family?.location?.id) : 0
                   }
